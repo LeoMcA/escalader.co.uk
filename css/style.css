@@ -12,6 +12,10 @@ a:hover{
   text-decoration: underline;
 }
 
+a img {
+  border: none;
+}
+
 .full-width {
   width: 100%;
 }
@@ -43,10 +47,17 @@ h1 {
   font: 45px "nerissemibold", sans-serif;
   font-weight: normal;
   text-align: center;
+  margin-top: 40px;
 }
 
 h2 {
   font: 30px "nerislight", sans-serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+h3 {
+  font: 20px "nerislight", sans-serif;
   font-weight: normal;
   text-align: center;
 }
@@ -65,29 +76,14 @@ footer div {
   margin-bottom: 15px;
 }
 
-/* !Tablet, 6 column, 720 (min 740) */
-@media screen and (min-width: 740px) and (max-width: 980px) {
-
-
-}
-
-/* !Mobile, 540 (max 740) */
-@media screen and (max-width: 740px) {
-
-  footer {
-    text-align: center;
-  }
-
-}
-
 header .row-box {
   padding: 100px 0;
-  height: 551px;
+  min-height: 551px;
 }
 
 .row-box {
   padding: 25px 0;
-  height: 401px;
+  min-height: 401px;
 }
 
 .box {
@@ -121,7 +117,11 @@ header .row-box {
 
 .row-box p {
   text-align: center;
-  margin: 20 0;
+  margin: 22px 0;
+}
+
+.row-box-box p {
+  margin: 100px 0;
 }
 
 .soap {
@@ -146,4 +146,24 @@ small {
   font-size: 50px;
   display: block;
   text-align: center;
+}
+
+/* !Tablet, 6 column, 720 (min 740) */
+@media screen and (min-width: 740px) and (max-width: 980px) {
+  .box {
+    display: none;
+  }
+}
+
+/* !Mobile, 540 (max 740) */
+@media screen and (max-width: 740px) {
+
+  .box {
+    display: none;
+  }
+
+  footer {
+    text-align: center;
+  }
+
 }
