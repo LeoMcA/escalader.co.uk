@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  font: 20px "nerislight", sans-serif;
+}
+
+a {
+  color: #296DFF;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.full-width {
+  width: 100%;
+}
+
+header {
+  background: #05C1FF;
+  padding: 50px 0 0;
+  color: #fff;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+nav li {
+  list-style-type: none;
+  display: inline-block;
+  font: 20px/30px "Neris Black";
+  margin-left: 40px;
+}
+
+nav a {
+  color: #fff;
+}
+
+h1 {
+  font: 45px "nerissemibold", sans-serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+h2 {
+  font: 30px "nerislight", sans-serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+footer {
+  padding: 50px 0;
+  color: #05C1FF;
+  font: 15px "nerissemibold", sans-serif;
+}
+
+footer p {
+  margin-top: 0;
+}
+
+footer div {
+  margin-bottom: 15px;
+}
+
+/* !Tablet, 6 column, 720 (min 740) */
+@media screen and (min-width: 740px) and (max-width: 980px) {
+
+
+}
+
+/* !Mobile, 540 (max 740) */
+@media screen and (max-width: 740px) {
+
+  footer {
+    text-align: center;
+  }
+
+}
+
+header .row-box {
+  padding: 100px 0;
+  height: 551px;
+}
+
+.row-box {
+  padding: 25px 0;
+  height: 401px;
+}
+
+.box {
+  width: 545px;
+  height: 351px;
+  position: relative;
+}
+
+.box-inside {
+  position: absolute;
+  left: 32px;
+}
+
+.box-lid {
+  position: absolute;
+  left: 57px;
+  top: 25px
+}
+
+.box-top {
+  position: absolute;
+  left: 37px;
+  top: 5px;
+}
+
+.box-ribbon {
+  position: absolute;
+  left: 57px;
+  top: 0;
+}
+
+.row-box p {
+  text-align: center;
+  margin: 20 0;
+}
+
+.soap {
+  color: #59f;
+}
+
+.body-wash {
+  color: #ac0000;
+}
+
+.hand-cream {
+  color: #00c74f;
+}
+
+big {
+  font-size: 100px;
+  display: block;
+  text-align: center;
+}
+
+small {
+  font-size: 50px;
+  display: block;
+  text-align: center;
+}
