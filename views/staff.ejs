@@ -25,6 +25,14 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Dashboard</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if(email){ %>
+            <li><a href="#logout" id="logout">Logout</a></li>
+            <p class="navbar-text">Logged in as <%= email %></p>
+            <% }else{ %>
+            <li><a href="#login" id="login">Login</a></li>
+            <% } %>
+          </ul>
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>
@@ -35,5 +43,7 @@
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="https://login.persona.org/include.js"></script>
+    <script src="/js/staff.js"></script>
   </body>
 </html>

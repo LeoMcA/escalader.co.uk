@@ -8,5 +8,10 @@ exports.index = function(req, res){
 };
 
 exports.staff = function(req, res){
-  res.render('staff', {content: ''});
+  var data = {
+    content: '',
+    email: false
+  };
+  if(req.session) data.email = req.session.email;
+  res.render('staff', data);
 }
