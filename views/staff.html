@@ -26,19 +26,20 @@
             <li class="active"><a href="#">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <% if(email){ %>
+            {% if email %}
             <li><a href="#logout" id="logout">Logout</a></li>
-            <p class="navbar-text">Logged in as <%= email %></p>
-            <% }else{ %>
+            <p class="navbar-text">Logged in as {{ email }}</p>
+            {% endif %}
+            {% if !email %}
             <li><a href="#login" id="login">Login</a></li>
-            <% } %>
+            {% endif %}
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>
 
     <div class="container">
-      <%= content %>
+      {{ content }}
     </div>
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
