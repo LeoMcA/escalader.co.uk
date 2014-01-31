@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Staff Area</title>
+    <title>{% block title %}Staff Area{% endblock %}</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/staff.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +39,8 @@
     </nav>
 
     <div class="container">
-      {{ content }}
+      {% block content %}
+      {% endblock %}
     </div>
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>

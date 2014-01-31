@@ -9,7 +9,6 @@ exports.index = function(req, res){
 
 exports.staff = function(req, res){
   var data = {
-    content: '',
     email: false
   };
   if(req.session) data.email = req.session.email;
