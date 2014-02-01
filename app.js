@@ -41,6 +41,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+
+app.all('/staff', routes.staff.requireAuthentication);
+app.all('/staff/*', routes.staff.requireAuthentication);
 app.get('/staff', routes.staff);
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -9,8 +9,12 @@ exports.index = function(req, res){
 
 exports.staff = function(req, res){
   var data = {
-    email: false
+    email: req.session.email
   };
-  if(req.session) data.email = req.session.email;
   res.render('staff', data);
+}
+
+exports.staff.requireAuthentication = function(req, res, next){
+  if(req.session.email) next();
+  else res.render('login');
 }
