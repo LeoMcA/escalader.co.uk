@@ -15,6 +15,6 @@ exports.staff = function(req, res){
 }
 
 exports.staff.requireAuthentication = function(req, res, next){
-  if(req.session.email) next();
+  if(req.session.authorised) next();
   else res.render('login');
 }

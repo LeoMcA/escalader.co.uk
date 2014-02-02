@@ -12,12 +12,14 @@ $(document).ready(function(){
     onlogin: function(assertion){
       $.post('/persona/verify', {assertion: assertion}, function(res){
         console.log(res);
+        if(!loggedIn) location.reload();
       })
     },
 
     onlogout: function(){
       $.post('/persona/logout', function(res){
         console.log(res);
+        if(loggedIn) location.reload();
       });
     }
   });

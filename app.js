@@ -30,7 +30,25 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 require("express-persona")(app, {
-  audience: 'http://localhost:' + app.get('port')
+  audience: 'http://localhost:' + app.get('port'),
+  verifyResponse: function(err, req, res, email){
+    if(err){
+      res.json({ status: 'failure', reason: 'Persona Error: '+err });
+      return;
+    } if(email.indexOf('escalader.co.uk') !== -1) {
+      req.session.authorised = true;
+      res.json({ status: 'okay', email: email });
+      return;
+    }
+    res.json({ status: 'failure' });
+  },
+  logoutResponse: function(err, req, res){
+    if(err){
+      res.json({ status: 'failure', reason: 'Persona Error: '+err });
+      return;
+    } if(req.session.authorised) req.session.authorised = false;
+    res.json({ status: 'okay' })
+  }
 });
 
 // development only
