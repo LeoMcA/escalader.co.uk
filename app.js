@@ -4,7 +4,6 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var swig = require('swig');
@@ -58,11 +57,14 @@ if ('development' == app.get('env')) {
   swig.setDefaults({ cache: false });
 }
 
+var routes = require('./routes');
+routes.staff = require('./routes/staff');
+
 app.get('/', routes.index);
 
 app.all('/staff', routes.staff.requireAuthentication);
 app.all('/staff/*', routes.staff.requireAuthentication);
-app.get('/staff', routes.staff);
+app.get('/staff', routes.staff.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
