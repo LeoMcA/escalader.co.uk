@@ -7,12 +7,19 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var swig = require('swig');
+var cradle = require('cradle');
 
 var app = express();
 
 // set up swig
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
+
+// set up cradle
+cradle.setup({
+  host: 'localhost',
+  cache: false
+})
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -65,6 +72,8 @@ app.get('/', routes.index);
 app.all('/staff', routes.staff.requireAuthentication);
 app.all('/staff/*', routes.staff.requireAuthentication);
 app.get('/staff', routes.staff.index);
+app.get('/staff/users', routes.staff.users);
+app.post('/staff/users', routes.staff.users.post);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
