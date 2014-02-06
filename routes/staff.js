@@ -21,7 +21,12 @@ exports.users = function(req, res){
       email: req.session.email,
       users: doc
     };
-    res.render('staff/users', data);
+    db.view('roles/all', function(err, doc){
+      if(err) console.log(err); // TODO: handle errors
+      data.roles = doc;
+      console.log(doc)
+      res.render('staff/users', data);
+    });
   });
 }
 
@@ -32,6 +37,18 @@ exports.users.post = function(req, res){
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     role: req.body.role
+  }, function(err, cres){
+    if(err) console.log(err); // TODO: handle errors
+    res.redirect('/staff/users');
+  });
+}
+
+exports.users.permissions = function(req, res){
+  db.save({
+    type: 'role',
+    role: req.body.role,
+    accessStaff: req.body.accessStaff,
+    modifyUsers: req.body.modifyUsers
   }, function(err, cres){
     if(err) console.log(err); // TODO: handle errors
     res.redirect('/staff/users');

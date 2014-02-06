@@ -32,6 +32,14 @@ db.save('_design/users', {
   }
 });
 
+db.save('_design/roles', {
+  all: {
+    map: function(doc){
+      if(doc.type == 'role') emit(null, doc);
+    }
+  }
+});
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -85,6 +93,7 @@ app.all('/staff/*', routes.staff.requireAuthentication);
 app.get('/staff', routes.staff.index);
 app.get('/staff/users', routes.staff.users);
 app.post('/staff/users', routes.staff.users.post);
+app.post('/staff/users/permissions', routes.staff.users.permissions);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

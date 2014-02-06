@@ -1,37 +1,75 @@
 {% extends 'index.html' %}
 {% block content %}
-<table class="table">
-  <thead>
-    <tr>
-      <td>Email</td>
-      <td>First Name</td>
-      <td>Last Name</td>
-      <td>Role</td>
-    </tr>
-  </thead>
-  <tbody>
-    <form action="" method="post">
-      <tr>
-        <td><input type="email" value="@escalader.org.uk" class="form-control" name="email" required></td>
-        <td><input type="text" class="form-control" name="firstName" required></td>
-        <td><input type="text" class="form-control" name="lastName" required></td>
-        <td>
-          <select class="form-control" name="role" required>
-            <option>staff</option>
-            <option>admin</option>
-          </select>
-        </td>
-        <td><button type="submit" class="btn btn-primary">Save</button><button type="reset" class="btn btn-link">Cancel</button></td>
-      </tr>
-    </form>
-  {% for user in users %}
-    <tr>
-      <td>{{ user.value.email }}</td>
-      <td>{{ user.value.firstName }}</td>
-      <td>{{ user.value.lastName }}</td>
-      <td>{{ user.value.role }}</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#users" data-toggle="tab">Home</a></li>
+  <li><a href="#roles" data-toggle="tab">Permissions</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="users">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Email</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Role</td>
+        </tr>
+      </thead>
+      <tbody>
+        <form action="" method="post">
+          <tr>
+            <td><input type="email" value="@escalader.org.uk" class="form-control" name="email" required></td>
+            <td><input type="text" class="form-control" name="firstName" required></td>
+            <td><input type="text" class="form-control" name="lastName" required></td>
+            <td>
+              <select class="form-control" name="role" required>
+                {% for role in roles %}
+                  <option>{{ role.value.role }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <td><button type="submit" class="btn btn-primary">Save</button><button type="reset" class="btn btn-link">Cancel</button></td>
+          </tr>
+        </form>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.value.email }}</td>
+          <td>{{ user.value.firstName }}</td>
+          <td>{{ user.value.lastName }}</td>
+          <td>{{ user.value.role }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane" id="roles">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Role</td>
+          <td>Access Staff Area</td>
+          <td>Modify Users</td>
+        </tr>
+      </thead>
+      <tbody>
+        <form action="/staff/users/permissions" method="post">
+          <tr>
+            <td><input type="text" class="form-control" name="role" required></td>
+            <td><input type="checkbox" name="accessStaff"></td>
+            <td><input type="checkbox" name="modifyUsers"></td>
+            <td><button type="submit" class="btn btn-primary">Save</button><button type="reset" class="btn btn-link">Cancel</button></td>
+          </tr>
+        </form>
+      {% for role in roles %}
+        <tr>
+          <td>{{ role.value.role }}</td>
+          <td><input type="checkbox" disabled {% if role.value.acessStaff %}checked{% endif %}></td>
+          <td><input type="checkbox" disabled {% if role.value.modifyUsers %}checked{% endif %}></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 {% endblock %}
