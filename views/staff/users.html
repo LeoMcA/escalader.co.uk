@@ -26,10 +26,10 @@
     </form>
   {% for user in users %}
     <tr>
-      <td>{{ user.email }}</td>
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.role }}</td>
+      <td>{{ user.value.email }}</td>
+      <td>{{ user.value.firstName }}</td>
+      <td>{{ user.value.lastName }}</td>
+      <td>{{ user.value.role }}</td>
     </tr>
   {% endfor %}
   </tbody>

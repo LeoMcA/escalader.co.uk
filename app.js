@@ -19,7 +19,18 @@ app.set('view engine', 'html');
 cradle.setup({
   host: 'localhost',
   cache: false
-})
+});
+
+var connection = new cradle.Connection;
+var db = connection.database('escalader');
+
+db.save('_design/users', {
+  all: {
+    map: function(doc){
+      if(doc.type == 'user') emit(null, doc);
+    }
+  }
+});
 
 // all environments
 app.set('port', process.env.PORT || 3000);

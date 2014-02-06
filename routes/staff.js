@@ -15,11 +15,14 @@ exports.index = function(req, res){
 }
 
 exports.users = function(req, res){
-  var data = {
-    email: req.session.email,
-    users: []
-  };
-  res.render('staff/users', data);
+  db.view('users/all', function(err, doc){
+    if(err) console.log(err); // TODO: handle errors
+    var data = {
+      email: req.session.email,
+      users: doc
+    };
+    res.render('staff/users', data);
+  });
 }
 
 exports.users.post = function(req, res){
@@ -30,7 +33,7 @@ exports.users.post = function(req, res){
     lastName: req.body.lastName,
     role: req.body.role
   }, function(err, cres){
-    if(err) return; // TODO: handle errors
+    if(err) console.log(err); // TODO: handle errors
     res.redirect('/staff/users');
   });
 }
