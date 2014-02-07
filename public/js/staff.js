@@ -24,4 +24,16 @@ $(document).ready(function(){
     }
   });
 
+  // Users
+  $('a[href="#users"]').click(function(e){
+    history.pushState({ tab: 'users' }, '', '/staff/users');
+  });
+  $('a[href="#permissions"]').click(function(e){
+    history.pushState({ tab: 'permissions' }, '', '/staff/users/permissions');
+  });
+
+  window.onpopstate = function(e){
+    $('a[href="#'+e.state.tab+'"]').tab('show');
+  }
+
 });

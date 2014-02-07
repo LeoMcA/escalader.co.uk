@@ -93,7 +93,8 @@ app.all('/staff/*', routes.staff.requireAuthentication);
 app.get('/staff', routes.staff.index);
 app.get('/staff/users', routes.staff.users);
 app.post('/staff/users', routes.staff.users.post);
-app.post('/staff/users/permissions', routes.staff.users.permissions);
+app.get('/staff/users/permissions', routes.staff.users.permissions);
+app.post('/staff/users/permissions', routes.staff.users.permissions.post);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

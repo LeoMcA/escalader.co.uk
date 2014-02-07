@@ -18,6 +18,7 @@ exports.users = function(req, res){
   db.view('users/all', function(err, doc){
     if(err) console.log(err); // TODO: handle errors
     var data = {
+      page: 'user',
       email: req.session.email,
       users: doc
     };
@@ -44,6 +45,23 @@ exports.users.post = function(req, res){
 }
 
 exports.users.permissions = function(req, res){
+  db.view('users/all', function(err, doc){
+    if(err) console.log(err); // TODO: handle errors
+    var data = {
+      page: 'permissions',
+      email: req.session.email,
+      users: doc
+    };
+    db.view('roles/all', function(err, doc){
+      if(err) console.log(err); // TODO: handle errors
+      data.roles = doc;
+      console.log(doc)
+      res.render('staff/users', data);
+    });
+  });
+}
+
+exports.users.permissions.post = function(req, res){
   db.save({
     type: 'role',
     role: req.body.role,

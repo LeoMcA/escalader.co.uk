@@ -1,12 +1,12 @@
 {% extends 'index.html' %}
 {% block content %}
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#users" data-toggle="tab">Home</a></li>
-  <li><a href="#roles" data-toggle="tab">Permissions</a></li>
+  <li {% if page == 'user' %}class="active"{% endif %}><a href="#users" data-toggle="tab">Home</a></li>
+  <li {% if page == 'permissions' %}class="active"{% endif %}><a href="#permissions" data-toggle="tab">Permissions</a></li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="users">
+  <div class="tab-pane {% if page == 'user' %}active{% endif %}" id="users">
     <table class="table">
       <thead>
         <tr>
@@ -43,7 +43,7 @@
       </tbody>
     </table>
   </div>
-  <div class="tab-pane" id="roles">
+  <div class="tab-pane {% if page == 'permissions' %}active{% endif %}" id="permissions">
     <table class="table">
       <thead>
         <tr>
