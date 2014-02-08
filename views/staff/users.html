@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <form action="" method="post">
+        <form action="/staff/users" method="post">
           <tr>
             <td><input type="email" value="@escalader.org.uk" class="form-control" name="email" required></td>
             <td><input type="text" class="form-control" name="firstName" required></td>
@@ -64,7 +64,7 @@
       {% for role in roles %}
         <tr>
           <td>{{ role.value.role }}</td>
-          <td><input type="checkbox" disabled {% if role.value.acessStaff %}checked{% endif %}></td>
+          <td><input type="checkbox" disabled {% if role.value.accessStaff %}checked{% endif %}></td>
           <td><input type="checkbox" disabled {% if role.value.modifyUsers %}checked{% endif %}></td>
         </tr>
       {% endfor %}
