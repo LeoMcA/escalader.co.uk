@@ -33,7 +33,13 @@ $(document).ready(function(){
   });
 
   window.onpopstate = function(e){
-    $('a[href="#'+e.state.tab+'"]').tab('show');
+    var url = e.target.document.URL;
+    var indexOfSlash = url.lastIndexOf('/') + 1;
+    var indexOfOther = url.length;
+    if(url.indexOf('#', indexOfSlash) != -1) indexOfOther = url.indexOf('#', indexOfSlash);
+    if(url.indexOf('?', indexOfSlash) != -1) indexOfOther = url.indexOf('?', indexOfSlash);
+    var tab = url.substr(indexOfSlash, indexOfOther - indexOfSlash)
+    $('a[href="#'+tab+'"]').tab('show');
   }
 
 });
