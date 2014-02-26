@@ -21,7 +21,7 @@ a img {
 }
 
 header {
-  background: #05C1FF;
+  background: #d40055;
   padding: 50px 0 0;
   color: #fff;
 }
@@ -44,20 +44,16 @@ nav a {
 }
 
 h1 {
-  font: 45px "nerissemibold", sans-serif;
+  /*font: 45px "nerissemibold", sans-serif;*/
+  font: 60px "Gabriola", serif;
   font-weight: normal;
   text-align: center;
   margin-top: 40px;
 }
 
 h2 {
-  font: 30px "nerislight", sans-serif;
-  font-weight: normal;
-  text-align: center;
-}
-
-h3 {
-  font: 20px "nerislight", sans-serif;
+  /*font: 30px "nerislight", sans-serif;*/
+  font: 40px "Gabriola", serif;
   font-weight: normal;
   text-align: center;
 }
